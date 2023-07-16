@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/productListingFragment">
+
+
+    <fragment
+        android:id="@+id/productListingFragment"
+        android:name="com.abhay.swipeassigment.product_listing.fragment.ProductListingFragment"
+        android:label="ProductListingFragment" >
+        <action
+            android:id="@+id/action_productListingFragment_to_productPostFragment"
+            app:destination="@id/productPostFragment"
+            app:popUpToInclusive="false"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/productPostFragment"
+        android:name="com.abhay.swipeassigment.product_post.fragment.ProductPostFragment"
+        android:label="ProductPostFragment" />
+</navigation>

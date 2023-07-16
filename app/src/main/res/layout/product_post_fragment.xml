@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.abhay.swipeassigment.product_post.viewmodel.ProductPostViewModel" />
+        <variable
+            name="iOnHandler"
+            type="com.abhay.swipeassigment.product_post.listeners.IOnProductPostHandler" />
+    </data>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/productImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_add_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/selectImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/select_image_lable"
+            setImagePicker="@{iOnHandler}"
+            viewmodel="@{viewModel}"
+            image="@{productImage}"
+            app:layout_constraintEnd_toEndOf="@id/productImage"
+            app:layout_constraintStart_toStartOf="@id/productImage"
+            app:layout_constraintTop_toBottomOf="@id/productImage"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/productNameLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/product_name_lable"
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectImageButton"
+            app:errorEnabled="true"
+            app:errorContentDescription="@{viewModel.productNameError}">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/productNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.productName}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/productTypeLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Priority"
+            android:layout_marginStart="4dp"
+            android:textSize="@dimen/medium_text"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productNameLayout"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/productTypeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            app:errorTextAppearance="@font/poppins_regular"
+            app:errorContentDescription="Product Type"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productTypeLable"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/productType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/ThemeOverlay.Material3.AutoCompleteTextView"
+                android:textSize="@dimen/medium_text"
+                android:textColor="@color/black"
+                android:padding="0dp"
+                android:inputType="none"
+                android:background="@drawable/edit_text_background"
+                android:fontFamily="@font/poppins_regular"
+                setProductTypeListener="@{viewModel}"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/productTypeErrorLable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="@dimen/error_textview"
+            android:text="@{viewModel.productTypeError}"
+            android:textColor="@color/red_error"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productTypeLayout"
+            />
+
+
+<!--        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/productTypeLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Product Type"
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productNameLayout"
+            app:errorEnabled="true"
+            app:errorContentDescription="@{viewModel.productTypeError}">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/productTypeEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={viewModel.productType}" />
+
+        </com.google.android.material.textfield.TextInputLayout>-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/productPriceLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Product Price"
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productTypeErrorLable"
+            app:errorEnabled="true"
+            app:errorContentDescription="@{viewModel.productPriceError}"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/productPriceEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="@={viewModel.productPrice}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/taxValueLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Tax Value"
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeWidth="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productPriceLayout"
+            app:errorEnabled="true"
+            app:errorContentDescription="@{viewModel.taxValueError}"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/taxValueEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:text="@={viewModel.taxValue}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/convertToDataClassButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="64dp"
+            android:text="add product"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/taxValueLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            setAddProductListener="@{iOnHandler}"
+            viewmodel="@{viewModel}"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+</layout>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Swipe Assigment</string>
+    <string name="enter_valid_input_error_lable">Please enter input valid input</string>
+    <string name="select_product_type_error_lable">Please select product type</string>
+    <string name="select_image_lable">Select Image</string>
+    <string name="product_name_lable">Product Name</string>
+
+
+    <string-array name="product_type_arr">
+        <item>Select Product Type</item>
+        <item>shopping</item>
+        <item>furniture</item>
+        <item>electronics</item>
+        <item>game</item>
+        <item>Product</item>
+        <item>Books</item>
+        <item>Food</item>
+        <item>Service</item>
+        <item>Electronics</item>
+        <item>7095966526</item>
+    </string-array>
+</resources>
